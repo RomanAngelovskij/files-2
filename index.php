@@ -64,7 +64,6 @@ function processFiles($dir, $params)
                 //Если изображение, перемещаем его в соответствующую папку
                 if (isImage($file, $params) === true){
                     if (copy($file, __DIR__ . '/' . trim($params['imagesDir'], '/') . '/' . pathinfo($file, PATHINFO_BASENAME))){
-                        chmod($file, 0777);
                         if (unlink($file) === false) {
                             echo "Cannot remove file " . $file . "\n";
                         }
@@ -74,7 +73,6 @@ function processFiles($dir, $params)
                 //Если старый фаил, переносим в архив
                 if (isOld($file, $params) === true){
                     if (copy($file, __DIR__ . '/' . trim($params['archiveDir'], '/') . '/' . pathinfo($file, PATHINFO_BASENAME))){
-                        chmod($file, 0777);
                         if (unlink($file) === false) {
                             echo "Cannot remove file " . $file . "\n";
                         }
